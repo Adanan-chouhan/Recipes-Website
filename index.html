@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simply Recipes || Starter</title>
+    <!-- favicon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./assets/favicon.ico" type="image/x-icon">
+    <!-- <link rel="stylesheet" href="./Css/main.css"> -->
+    <style>
+        *,
+        ::after,
+        ::before {
+            box-sizing: border-box;
+        }
+
+        /* fonts */
+        @import url(https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&family=Montserrat&display=swap);
+
+        html {
+            font-size: 100%;
+        }
+
+        :root {
+            /* colors */
+            --primary-100: #e2e0ff;
+            --primary-200: #c1beff;
+            --primary-300: #a29dff;
+            --primary-400: #837dff;
+            --primary-500: #645cff;
+            --primary-600: #504acc;
+            --primary-700: #3c3799;
+            --primary-800: #282566;
+            --primary-900: #141233;
+
+            /* grey */
+            --grey-50: #f8fafc;
+            --grey-100: #f8fafc;
+            --grey-200: #f8fafc;
+            --grey-300: #f8fafc;
+            --grey-400: #f8fafc;
+            --grey-500: #f8fafc;
+            --grey-600: #f8fafc;
+            --grey-700: #f8fafc;
+            --grey-800: #f8fafc;
+            --grey-900: #f8fafc;
+
+            /* rest of the colors */
+            --black: #222;
+            --white: #fff;
+            --red-light: #f8d7da;
+            --red-dark: #842029;
+            --green-light: #d1e7dd;
+            --green-dark: #0f5132;
+
+            /* fonts */
+            --headingFont: 'Roboto', sans-serif;
+            --bodyFont: 'Nunito', sans-serif;
+            --amallText: 0.7em;
+            /* rest of the vars */
+            --backgroundColor: var(--grey-50);
+            --textColor: var(--grey-900);
+            --borderRedius: 0.25rem;
+            --letterSpacing: 1px;
+            --transition: 0.3s ease-in-out all;
+            --max-width: 1120px;
+            --fixed-width: 600px;
+
+            /* box shadow */
+            --shadow-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-2: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+            --shadow-3: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shdow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        body {
+            background: var(--backgroundColor);
+            font-family: var(--bodyFont);
+            font-weight: 400;
+            line-height: 1.75;
+            color: var(--textColor)
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            max-width: 40em;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            margin: 0;
+            margin-bottom: 1.38rem;
+            font-family: var(--headingFont);
+            font-weight: 400px;
+            line-height: 1.3;
+            text-transform: capitalize;
+            letter-spacing: var(--letterSpacing);
+        }
+
+        h1 {
+            margin-top: 0;
+            font-size: 3.052rem;
+        }
+
+        h2 {
+            font-size: 2.441rem;
+        }
+
+        h3 {
+            font-size: 1.953rem;
+        }
+
+        h4 {
+            font-size: 1.563rem;
+        }
+
+        h5 {
+            font-size: 1.25rem;
+        }
+
+        small,
+        .text-small {
+            font-size: var(--smallText);
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* buttons */
+
+        .btn {
+            cursor: pointer;
+            color: var(--white);
+            background: var(--primary-500);
+            border: transparent;
+            border-radius: var(--borderRedius);
+            letter-spacing: var(--letterSpacing);
+            padding: 0.375rem 0.75rem;
+            box-shadow: var(--shadow-1);
+            transition: var(--transition);
+            text-transform: capitalize;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: var(--primary-700);
+            box-shadow: var(--shadow-3);
+        }
+
+        .btn-hipster {
+            color: var(--primary-500);
+            background: var(--primary-200);
+        }
+
+        .btn-hipster:hover {
+            color: var(--primary-200);
+            background: var(--primary-700);
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        /* alert */
+        .alert {
+            padding: 0.375rem 0.75rem;
+            margin-bottom: 1rem;
+            border-color: transparent;
+            border-radius: var(--borderRedius);
+        }
+
+        .alert-danger {
+            color: var(--red-dark);
+            background: var(--red-light);
+        }
+
+        .alert-success {
+            color: var(--green-dark);
+            background: var(--green-light);
+        }
+
+        /* form */
+        .form {
+            width: 90vw;
+            max-width: var(--fixed-width);
+            background: var(---white);
+            border-radius: var(--borderRedius);
+            box-shadow: var(--shadow-2);
+            padding: 2rem 2.5rem;
+            margin: 3rem auto;
+        }
+
+        .form-label {
+            display: block;
+            font-size: var(--smallText);
+            margin-bottom: 0.5rem;
+            text-transform: capitalize;
+            letter-spacing: var(--letterSpacing);
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 0.375rem 0.675rem;
+            border-radius: var(--borderRedius);
+            background: var(--backgroundColor);
+            border: 1px solid #222;
+        }
+
+        .form-row {
+            margin-bottom: 1rem;
+        }
+
+        .form-textarea {
+            height: 7rem;
+        }
+
+        ::placeholder {
+            font-family: inherit;
+            color: var(--grey-400);
+        }
+
+        .form-alert {
+            color: var(--red-dark);
+            letter-spacing: var(--letterSpacing);
+            text-transform: capitalize;
+        }
+
+        /* alert */
+        @keyframes spinner {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loading {
+            width: 6rem;
+            height: 6rem;
+            border: 5px solid var(--grey-400);
+            border-radius: 50%;
+            border-top-color: var(--primary-500);
+            animation: spinner 0.6s linear infinite;
+        }
+
+        .loading {
+            margin: 0 outo;
+        }
+
+        /* title */
+        .title {
+            text-align: center;
+        }
+
+        .title-underline {
+            background: var(--primary-500);
+            width: 7rem;
+            height: 0.25rem;
+            margin: 0 auto;
+            margin-top: 1rem;
+        }
+
+        /* 
+==============
+Nevbar
+============== 
+*/
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* background: blue; */
+        }
+
+        .nav-center {
+            width: 90vw;
+            max-width: var(--max-width);
+            /* background: red; */
+        }
+
+        .nav-header {
+            height: 6rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* .nav-logo{
+    display: flex;
+    align-items: center;
+} */
+        .nav-header img {
+            width: 300px;
+        }
+
+        .nav-btn i {
+            padding: 0.15rem 0.75rem;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            /* todo */
+            height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .show-links {
+            height: 310px;
+        }
+
+        .nav-link {
+            display: block;
+            text-align: center;
+            text-transform: capitalize;
+            /* color:var(--grey-900); */
+            letter-spacing: var(--letterSpacing);
+            padding: 1rem 0;
+            border-top: 1px solid darkslategray;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-500);
+        }
+
+        .nav-link a {
+            padding: 0.15rem 1rem;
+        }
+
+        @media screen and (min-width:992px) {
+            .nav-btn {
+                display: none;
+            }
+
+            .navbar {
+                height: 6rem;
+            }
+
+            .nav-center {
+                display: flex;
+                align-items: center;
+            }
+
+            .nav-header {
+                height: auto;
+                margin-right: 2rem;
+            }
+
+            .nav-links {
+                height: auto;
+                flex-direction: row;
+                align-items: center;
+                width: 100%;
+            }
+
+            .nav-link {
+                padding: 0;
+                padding-right: 15px;
+                border-top: none;
+                margin-top: 1rem;
+                font-size: 1rem;
+            }
+
+            .contact-link {
+                margin-left: auto;
+                margin-right: 0;
+            }
+        }
+
+        /* 
+==============
+Page
+==============
+ */
+        /* .page h1,h4{
+    color: rgba(0, 0, 0, 0.709);
+ } */
+        .page {
+            /* background: red; */
+            width: 90vw;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding-top: 2rem;
+            min-height: calc(100vh - (6rem + 4rem));
+        }
+
+        /* 
+==============
+Footer
+==============
+ */
+        .page-footer p {
+            color: var(--white);
+        }
+
+        .page-footer {
+            height: 4rem;
+            background: var(--black);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .page-footer p {
+            margin-bottom: 0;
+        }
+
+        .footer-logo,
+        .page-footer a {
+            color: var(--primary-500);
+        }
+
+        /* 
+==============
+ Hero
+==============
+ */
+        .hero {
+            height: 40vw;
+            background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7s_ahsRKi6uLeKssLYEK8WOj_S2Md9DcwMA&usqp=CAU) center/cover no-repeat;
+            margin-bottom: 2rem;
+            border-radius: var(--borderRedius);
+            position: relative;
+        }
+
+        .hero-text h1 {
+            color: var(---white);
+        }
+
+        .hero-text h4 {
+            color: var(---white);
+        }
+
+        .hero-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.04);
+            border-radius: var(--borderRedius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-text {
+            text-align: center;
+        }
+
+        @media screen and (min-width:768px) {
+            .hero-text h1 {
+                font-size: 4rem;
+                margin-bottom: 0;
+            }
+
+        }
+
+        /* 
+==============
+ Recoipes
+==============
+ */
+        .recipes-container {
+            display: grid;
+            gap: 2rem 1rem;
+
+
+        }
+
+        .tags-container {
+            order: 1;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 3rem;
+        }
+
+        .recipes-list {
+            display: grid;
+            gap: 2rem 1rem;
+            padding-bottom: 3rem;
+        }
+
+        .tags-container h4 {
+            color: #222;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+
+        }
+
+        .tags-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .tags-list a {
+            text-transform: capitalize;
+            display: block;
+            color: #222;
+            transition: var(--transition);
+        }
+
+        .tags-list a:hover {
+            color: var(--primary-500);
+        }
+
+        .recipes {
+            display: block;
+        }
+
+        .recipe-img {
+            height: 20rem;
+            border-radius: var(--borderRedius);
+            margin-bottom: 1rem;
+        }
+
+        .recipes h5 {
+            margin-bottom: 0;
+            line-height: 1;
+            color: #222;
+        }
+
+        .recipes p {
+            margin-bottom: 0;
+            line-height: 1;
+            margin-top: 0.5rem;
+            color: #222;
+            letter-spacing: var(--letterSpacing);
+        }
+
+        @media screen and (min-width:576px) {
+            .recipes-list {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .recipe-img {
+                height: 15rem;
+            }
+        }
+
+        @media screen and (min-width:992px) {
+            .recipes-container {
+                grid-template-columns: 200px 1fr;
+            }
+
+            .recipes p {
+                font-size: 0.95rem;
+            }
+
+            .tags-container {
+                order: 0;
+            }
+
+            .tags-list {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media screen and (min-width:1200px) {
+            .recipes-list {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        /* 
+==============
+ Error
+==============
+ */
+        .error-page {
+            text-align: center;
+            padding-top: 5rem;
+        }
+
+        .error-page h1 {
+            font-size: 9rem;
+            color: #222;
+        }
+
+        .error-page h3 {
+            color: #222;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            color: #222
+        }
+
+        /* 
+==============
+ About
+==============
+ */
+        .about-page h2 {
+            text-transform: none;
+            font-weight: bold;
+        }
+
+        .about-page {
+            display: grid;
+            gap: 2rem 4rem;
+            padding: 3rem;
+        }
+
+        .about-page p {
+            color: #222;
+        }
+
+        .about-img {
+            border-radius: var(--borderRedius);
+            height: 450px;
+        }
+
+        @media screen and (min-width:992px) {
+            .about-page {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 400px;
+                align-items: center;
+            }
+
+            .about-img {
+                height: 100%;
+            }
+        }
+
+        .featured-title {
+            text-align: center;
+        }
+
+        /* 
+==============
+ contact
+==============
+ */
+        .contact-info p {
+            color: #222;
+        }
+
+        .contact-form {
+            width: 100%;
+            margin: 0;
+        }
+
+        form {
+            background: white;
+            /* rgba(255, 248, 220, 0.323); */
+            color: #222;
+        }
+
+        .contact-container {
+            display: grid;
+            gap: 2rem 3rem;
+            padding: 10px 20px;
+            padding-bottom: 3rem;
+        }
+
+        @media screen and (min-width:992px) {
+            .contact-container {
+                grid-template-columns: 1fr 450px;
+                /* align-items: center; */
+            }
+        }
+
+        /* 
+==============
+tags page 
+==============
+ */
+
+        .tags-wrapper {
+            display: grid;
+            gap: 2rem;
+            padding-bottom: 3rem;
+        }
+
+        .tag {
+            background: rgba(128, 128, 128, 0.525);
+            border-radius: var(--borderRedius);
+            text-align: center;
+            color: var(---white);
+            transition: var(--transition);
+            padding: 0.75rem 0;
+        }
+
+        .tag:hover {
+            background: var(--primary-500);
+        }
+
+        .tag h5,
+        .tag p {
+            margin-bottom: 0;
+        }
+
+        .tag h5 {
+            font-size: 25px;
+        }
+
+        @media screen and (min-width:576px) {
+            .tags-wrapper {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media screen and (min-width:992px) {
+            .tags-wrapper {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+        }
+
+        /* 
+==============
+single recipe page
+==============
+ */
+
+        .recipes-page h2,
+        p {
+            color: #222;
+        }
+
+        .recipe-tags {
+            color: #222;
+        }
+
+        .recipe-hero {
+            display: grid;
+            gap: 3rem;
+        }
+
+        .recipe-hero img {
+            height: 300px;
+            border-radius: var(--borderRedius);
+        }
+
+        .recipe-icons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .recipe-icons i {
+            font-size: 1.5rem;
+            color: var(--primary-500);
+        }
+
+
+        .recipe-icons h5,
+        .recipe-icons p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+
+        .recipe-tags a {
+            background: var(--primary-500);
+            border-radius: var(--borderRedius);
+            color: var(--white);
+            padding: 0.05rem 0.5rem;
+            margin: 0 0.25rem;
+            text-transform: capitalize;
+        }
+
+        @media screen and (min-width:992px) {
+            .recipe-hero {
+                grid-template-columns: 4fr 5fr;
+                align-items: center;
+            }
+
+        }
+
+        .recipe-content {
+            padding: 3rem 0;
+            display: grid;
+            gap: 2rem 5rem;
+
+        }
+
+        @media screen and (min-width:992px) {
+            .recipe-content {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        .single-instruction header {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .single-instruction header p {
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 0;
+            color: var(--primary-500);
+        }
+
+        .single-instruction>p {
+            color: #222;
+        }
+
+        .single-instruction header div {
+            height: 2px;
+            background: #22222239;
+        }
+
+        .second-column {
+            display: grid;
+            row-gap: 2rem;
+        }
+
+        .single-ingredient {
+            border-bottom: 2px solid #22222239;
+            padding-bottom: 0.75rem;
+            color: #222;
+        }
+
+        .single-tool {
+            border-bottom: 2px solid #22222239;
+            padding-bottom: 0.75rem;
+            color: var(--primary-500);
+            text-transform: capitalize;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- nav -->
+    <nav class="navbar">
+        <div class="nav-center">
+            <!--header  -->
+            <div class="nav-header">
+                <a href="index.html" class="nav-logo">
+                    <img src="https://www.simplyrecipes.com/thmb/QvixEwCD02s_lnkgkVb6mHwKS7c=/1125x320/filters:no_upscale():max_bytes(150000):strip_icc()/SimplyRecipesLogoTransparent-07a297c54b2142ae9c079abb2f0fa639.png"
+                        alt="simply recipes">
+                </a>
+                <button type="button" class="btn nav-btn">
+                    <i class="fas fa-align-justify"></i>
+                </button>
+            </div>
+            <!-- links -->
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">home</a>
+                <a href="about.html" class="nav-link">about</a>
+                <a href="tags.html" class="nav-link">tags</a>
+                <a href="recipes.html" class="nav-link">recipes</a>
+                <div class="nav-link contact-link">
+                    <a href="contact.html" class="btn">contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- end of nav -->
+    <!-- main -->
+    <main class="page">
+        <!-- header -->
+        <header class="hero">
+            <div class="hero-container">
+                <div class="hero-text">
+                    <h1>Simply recipes</h1>
+                    <h4>no fluff, just recipes</h4>
+                </div>
+            </div>
+        </header>
+        <!-- end of header -->
+
+        <!-- recipes container -->
+        <section class="recipes-container">
+            <!-- tags container -->
+            <div class="tags-container">
+                <h4>recipes</h4>
+                <div class="tags-list">
+                    <a href="tag-template.html">Beef (1)</a>
+                    <a href="tag-template.html">Brekfast (2)</a>
+                    <a href="tag-template.html">Carrots (3)</a>
+                    <a href="tag-template.html">Food (4)</a>
+                </div>
+            </div>
+            <!-- end tags container -->
+
+            <!-- recipes list -->
+            <div class="recipes-list">
+                <!-- single recipes -->
+                <a href="single-resipe.html" class="recipes">
+                    <img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdBtMMbukt_wDTVx54A3VpzIehgRn1Pm014Q&usqp=CAU">
+                    <h5>carne asada</h5>
+                    <p>Prep : 15min | Cook : 5min </p>
+                </a>
+                <!-- end of single recipes -->
+                <!-- single recipes -->
+                <a href="single-resipe.html" class="recipes">
+                    <img src="https://images.ctfassets.net/1sfeg2xcbtuz/7iyRfnuQhVIHG6ysIxybmJ/28ed8288e3e2b7f94dfa2931763c66a1/recipe-2.jpg?w=1280&h=960&fl=progressive&q=50&fm=jpg"
+                        alt="food" class="img recipe-img">
+                    <h5>greek ribs </h5>
+                    <p>Prep : 15min | Cook : 5min </p>
+                </a>
+                <!-- end of single recipes -->
+                <!-- single recipes -->
+                <a href="single-resipe.html" class="recipes">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1TqZ2bhdX-4Ekz3rVcjlyRLahp8dh1ozFew&usqp=CAU"
+                        alt="food" class="img recipe-img">
+                    <h5>vegetable soup</h5>
+                    <p>Prep : 15min | Cook : 5min </p>
+                </a>
+                <!-- end of single recipes -->
+                <!-- single recipes -->
+                <a href="single-resipe.html" class="recipes">
+                    <img src="https://bakingmischief.com/wp-content/uploads/2018/09/easy-banana-pancakes-for-two-image-square.jpg"
+                        alt="food" class="img recipe-img">
+                    <h5>banana pancakes</h5>
+                    <p>Prep : 15min | Cook : 5min </p>
+                </a>
+                <!-- end of single recipes -->
+            </div>
+            <!-- end of recipes list -->
+        </section>
+        <!-- end of recipes container  -->
+    </main>
+    <!-- end of main -->
+    <!-- footer -->
+    <footer class="page-footer">
+        <p>
+            &copy;<span id="date">2023</span>
+            <span class="footer-logo">SimplyRecipes</span>
+            Built by <a href="https://github.com/">Coding Addict</a>
+        </p>
+    </footer>
+    <!-- <script src="./js/app.js"></script> -->
+    <script>
+        const getElement = (selector) => {
+            const element = document.querySelector(selector)
+            if (element) return element
+            throw Error(
+                'Please doble check your class names, there is no ${selector} class'
+            )
+        }
+
+        const links = getElement('.nav-links')
+        const navBtnDOM = getElement('.nav-btn')
+
+        navBtnDOM.addEventListener('click', () => {
+            links.classList.toggle('show-links')
+        })
+
+        const date = getElement('#date')
+        const currentYear = new Date().getFullYear()
+        date.textContent = currentYear 
+    </script>
+</body>
+
+</html>
